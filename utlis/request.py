@@ -17,15 +17,15 @@ urllib.request.install_opener(opener)
 
 # default header
 HEADER = {
-    'Accept':'*/*',
-    'Accept-Encoding':'identity;q=1, *;q=0',
+    'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+    'Accept-Encoding':'gzip, deflate, sdch',
     'Accept-Language':'zh-CN,zh;q=0.8',
     'Cache-Control':'max-age=0',
-    'Host':'v6.pstatp.com',
-    'Proxy-Connection':'keep-alive',
-    'Range':'bytes=0-',
-    'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36',
-    'Referer' : 'http://www.toutiao.com/a6349023694543945985/'
+    'Connection':'keep-alive',
+    'Host':'site.ip138.com',
+    'Referer':'http://site.ip138.com/www.facebook.com/',
+    'Upgrade-Insecure-Requests':1,
+    'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
 }
 
 # operate method
@@ -37,14 +37,13 @@ def geturlopen(hosturl, postData = {}, headers = HEADER):
     # open url
     urlresponse = urllib.request.urlopen(urlrequest)
     # return url
-    return urlresponse
+    return urlresponse.read().decode('utf-8', 'ignore')
 
 if __name__ == '__main__':
-    hosturl = "http://www.toutiao.com/a6349023694543945985/"
+    hosturl = "http://site.ip138.com/www.facebook.com/"
     postData = {
-        'Signature':'q2F+WD1tkfp2oIkf/2gNnLhrfAA=',
-        'Expires':1478849441,
-        'KSSAccessKeyId':'qh0h9TdcEMrm1VlR2ad/'
+        'input':'www.facebook.com',
+        'token':'3e1fa79db944e3c1547f8e61228c743a'
     }
     html = geturlopen(hosturl)
 

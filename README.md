@@ -436,48 +436,41 @@
 
     可知同一个视频，地址是即时的，每次都在变化，再访问以前的地址就被拒绝了，因此在求得url后需要立即下载。
 
-    （2）程序取视频url：模拟浏览器所发的请求，取得地址。如图：
-    ![](http://i.imgur.com/igSJO3R.png)
-
-    模拟浏览器请求代码如下：
+    （2）程序取视频url：由第3点有视频的文章下面陈列出的json文件可知，我们可以取到加密后的视频url，如：
+    <pre> "main_url":"aHR0cDovL3Y3LnBzdGF0cC5jb20vOGU3MmU3Yzk5YjAwMjg5ZjM0ODkzMTNiM2RkNjlmNDYvNTgyNThkZTgvdmlkZW8vYy9kN2Y0MjQwNWZlY2E0ZDY2YmI0NjMyYzllYmY1NTYwNy8="
+    </pre>
+    那么是否可以将这个加密后的url解密？既然谷歌浏览器检查到的视频url是解密后的，那么我想前台可能会有解密的方法，继续用谷歌浏览器检查该网页，点击Network，观察网页在加载时所请求的文件，如图：![](http://i.imgur.com/bO5vfeg.png)据分析得出`tt-video.js`文件与视频有关，查看该文件的源代码，找到如下解密url的函数
     <pre>
-    # -*- coding: utf-8 -*-
-    import urllib
-    import http.cookiejar
-    
-    #设置一个cookie处理器，它负责从服务器下载cookie到本地，并且在发送请求时带上本地的cookie
-    cj = http.cookiejar.LWPCookieJar()
-    cookie_support = urllib.request.HTTPCookieProcessor(cj)
-    opener = urllib.request.build_opener(cookie_support, urllib.request.HTTPHandler)
-    urllib.request.install_opener(opener)
-    
-    # default header
-    HEADER = {
-        'Accept':'*/*',
-        'Accept-Encoding':'identity;q=1, *;q=0',
-        'Accept-Language':'zh-CN,zh;q=0.8',
-        'Cache-Control':'max-age=0',
-        'Host':'v6.pstatp.com',
-        'Proxy-Connection':'keep-alive',
-        'Range':'bytes=0-',
-        'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36',
-        'Referer' : 'http://www.toutiao.com/a6349023694543945985/'
+    //参数为main_url
+    //返回解密后的url
+    function base64decode (e) {
+        var t, r, n, o, i, a, u, l = [ - 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1];
+        for (a = e.length, i = 0, u = ""; i < a;) {
+            do t = l[255 & e.charCodeAt(i++)];
+            while (i < a && t == -1);
+            if (t == -1) break;
+            do r = l[255 & e.charCodeAt(i++)];
+            while (i < a && r == -1);
+            if (r == -1) break;
+            u += String.fromCharCode(t << 2 | (48 & r) >> 4);
+            do {
+                if (n = 255 & e.charCodeAt(i++), 61 == n) return u;
+                n = l[n]
+            } while ( i < a && n == - 1 );
+            if (n == -1) break;
+            u += String.fromCharCode((15 & r) << 4 | (60 & n) >> 2);
+            do {
+                if (o = 255 & e.charCodeAt(i++), 61 == o) return u;
+                o = l[o]
+            } while ( i < a && o == - 1 );
+            if (o == -1) break;
+            u += String.fromCharCode((3 & n) << 6 | o)
+        }
+        return u
     }
-    
-    # operate method
-    def geturlopen(hosturl, postData = {}, headers = HEADER):
-        # encode postdata
-        enpostdata =  urllib.parse.urlencode(postData).encode('utf-8')
-        # request url
-        urlrequest = urllib.request.Request(hosturl, enpostdata, headers)
-        # open url
-        urlresponse = urllib.request.urlopen(urlrequest)
-        # return url
-        return urlresponse
-
     </pre>
 
-    下载视频代码如下：
+    取到视频url后，我们就可以下载该视频了，下载视频代码如下：
     <pre>
     import os
     import urllib
