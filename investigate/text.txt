@@ -1,0 +1,19 @@
+保时捷那么贵
+
+    "video_id":"5598ecf6f1a5495ba612e70e227fc32f",
+     "uri":"video1609/106a00060b699365d9c0",
+
+     "share_url":"http://toutiao.com/a6349132010456711425/?iid=6181230843&app=news_article",
+      "article_url":"http://toutiao.com/group/6349132010456711425/",
+    "display_url":"http://toutiao.com/group/6349132010456711425/",
+        "url":"http://toutiao.com/group/6349132010456711425/",
+        "media_id":50728551441,
+         "group_id":6349132010456711000,
+
+{"definition":"360p","vtype":"mp4","vwidth":640,"vheight":360,"bitrate":453532,"size":19759871,"main_url":"aHR0cDovL3Y3LnBzdGF0cC5jb20vMzFmNTRlZWRjYTI3ZTA1NWQ0ZmJiNmVlYTI0ZGZhMjMvNTgyMDNlZDMvdmlkZW8vYy83NjU1Mjg4NDZmZWY0Y2FiODQ1YTAyMmQ5NWU4ZjhiOS8=","backup_url_1":"aHR0cDovL3Y2LnBzdGF0cC5jb20vdmlkZW8vYy83NjU1Mjg4NDZmZWY0Y2FiODQ1YTAyMmQ5NWU4ZjhiOS8/RXhwaXJlcz0xNDc4NTExODQzJkFXU0FjY2Vzc0tleUlkPXFoMGg5VGRjRU1ybTFWbFIyYWQlMkYmU2lnbmF0dXJlPXJ6d2FMcG1iSjFMTUx2eVNxazZlUDVTdTQxSSUzRA==","preload_size":327680,"play_load_min_step":2,"play_load_max_step":10},"video_2":
+
+    <video>
+      src="http://v4.pstatp.com/b396afdb4d7a7b19c06b9d8b8def3c7c/582040b6/video/c/2e3aa15025b64eb48bafb83831be6276/"
+    </video>
+
+http://i.snssdk.com/video/urls/v/1/toutiao/mp4/5598ecf6f1a5495ba612e70e227fc32f

@@ -1,0 +1,63 @@
+推荐
+一  下拉刷新
+
+http://is.snssdk.com/api/news/feed/v47/?concern_id=6286225228934679042&refer=1&count=20&min_behot_time=1478072096&last_refresh_sub_entrance_interval=1478072949&loc_mode=6&loc_time=1478071943&latitude=39.903441&longitude=116.348745&city=%E5%8C%97%E4%BA%AC&tt_from=pull&lac=4124&cid=43070&cp=5f8e1c9d97a75q1&iid=6060889792&device_id=33418245041&ac=wifi&channel=xiaomi&aid=13&app_name=news_article&version_code=584&version_name=5.8.4&device_platform=android&ab_version=87590%2C86575%2C83095%2C86231%2C86001%2C79287%2C87752%2C87331%2C85046%2C86854%2C88106%2C87982%2C88088%2C87881%2C82679%2C87838%2C88067%2C87804%2C87828%2C87030%2C87498%2C87035%2C86724%2C87988&ab_client=a1%2Cc4%2Ce1%2Cf2%2Cg2%2Cf7&ab_feature=z1&abflag=3&ssmix=a&device_type=MI+2A&device_brand=Xiaomi&language=zh&os_api=16&os_version=4.1.1&uuid=860954025518090&openudid=60fcf5fe7e721c17&manifest_version_code=584&resolution=720*1280&dpi=320&update_version_code=5844&_rticket=1478072949920
+
+二   加载更多
+http://is.snssdk.com/api/news/feed/v47/?concern_id=6286225228934679042&refer=1&count=20&max_behot_time=1478070680&last_refresh_sub_entrance_interval=1478072967&loc_mode=6&loc_time=1478071943&latitude=39.903441&longitude=116.348745&city=%E5%8C%97%E4%BA%AC&tt_from=pre_load_more&lac=4124&cid=43070&cp=5a8119979da87q1&iid=6060889792&device_id=33418245041&ac=wifi&channel=xiaomi&aid=13&app_name=news_article&version_code=584&version_name=5.8.4&device_platform=android&ab_version=87590%2C86575%2C83095%2C86231%2C86001%2C79287%2C87752%2C87331%2C85046%2C86854%2C88106%2C87982%2C88088%2C87881%2C82679%2C87838%2C88067%2C87804%2C87828%2C87030%2C87498%2C87035%2C86724%2C87988&ab_client=a1%2Cc4%2Ce1%2Cf2%2Cg2%2Cf7&ab_feature=z1&abflag=3&ssmix=a&device_type=MI+2A&device_brand=Xiaomi&language=zh&os_api=16&os_version=4.1.1&uuid=860954025518090&openudid=60fcf5fe7e721c17&manifest_version_code=584&resolution=720*1280&dpi=320&update_version_code=5844&_rticket=1478072967639
+
+三  加载更多
+http://is.snssdk.com/api/news/feed/v47/?concern_id=6286225228934679042&refer=1&count=20&max_behot_time=1478069690&last_refresh_sub_entrance_interval=1478072970&loc_mode=6&loc_time=1478071943&latitude=39.903441&longitude=116.348745&city=%E5%8C%97%E4%BA%AC&tt_from=pre_load_more&lac=4124&cid=43070&cp=5f84109290a8aq1&iid=6060889792&device_id=33418245041&ac=wifi&channel=xiaomi&aid=13&app_name=news_article&version_code=584&version_name=5.8.4&device_platform=android&ab_version=87590%2C86575%2C83095%2C86231%2C86001%2C79287%2C87752%2C87331%2C85046%2C86854%2C88106%2C87982%2C88088%2C87881%2C82679%2C87838%2C88067%2C87804%2C87828%2C87030%2C87498%2C87035%2C86724%2C87988&ab_client=a1%2Cc4%2Ce1%2Cf2%2Cg2%2Cf7&ab_feature=z1&abflag=3&ssmix=a&device_type=MI+2A&device_brand=Xiaomi&language=zh&os_api=16&os_version=4.1.1&uuid=860954025518090&openudid=60fcf5fe7e721c17&manifest_version_code=584&resolution=720*1280&dpi=320&update_version_code=5844&_rticket=1478072970202
+
+四  加载更多
+http://is.snssdk.com/api/news/feed/v47/?concern_id=6286225228934679042&refer=1&count=20&max_behot_time=1478068923&last_refresh_sub_entrance_interval=1478073224&loc_mode=6&loc_time=1478071943&latitude=39.903441&longitude=116.348745&city=%E5%8C%97%E4%BA%AC&tt_from=pre_load_more&lac=4124&cid=43070&cp=5f8f139c9cb88q1&iid=6060889792&device_id=33418245041&ac=wifi&channel=xiaomi&aid=13&app_name=news_article&version_code=584&version_name=5.8.4&device_platform=android&ab_version=87590%2C86575%2C83095%2C86231%2C86001%2C79287%2C87752%2C87331%2C85046%2C86854%2C88106%2C87982%2C88088%2C87881%2C82679%2C87838%2C88067%2C87804%2C87828%2C87030%2C87498%2C87035%2C86724%2C87988&ab_client=a1%2Cc4%2Ce1%2Cf2%2Cg2%2Cf7&ab_feature=z1&abflag=3&ssmix=a&device_type=MI+2A&device_brand=Xiaomi&language=zh&os_api=16&os_version=4.1.1&uuid=860954025518090&openudid=60fcf5fe7e721c17&manifest_version_code=584&resolution=720*1280&dpi=320&update_version_code=5844&_rticket=1478073224621
+
+
+改变cp  不影响结果
+http://is.snssdk.com/api/news/feed/v47/?concern_id=6286225228934679042&refer=1&count=20&max_behot_time=1478068923&last_refresh_sub_entrance_interval=1478073224&loc_mode=6&loc_time=1478071943&latitude=39.903441&longitude=116.348745&city=%E5%8C%97%E4%BA%AC&tt_from=pre_load_more&lac=4124&cid=43070&cp=5f84109290a8aq1&iid=6060889792&device_id=33418245041&ac=wifi&channel=xiaomi&aid=13&app_name=news_article&version_code=584&version_name=5.8.4&device_platform=android&ab_version=87590%2C86575%2C83095%2C86231%2C86001%2C79287%2C87752%2C87331%2C85046%2C86854%2C88106%2C87982%2C88088%2C87881%2C82679%2C87838%2C88067%2C87804%2C87828%2C87030%2C87498%2C87035%2C86724%2C87988&ab_client=a1%2Cc4%2Ce1%2Cf2%2Cg2%2Cf7&ab_feature=z1&abflag=3&ssmix=a&device_type=MI+2A&device_brand=Xiaomi&language=zh&os_api=16&os_version=4.1.1&uuid=860954025518090&openudid=60fcf5fe7e721c17&manifest_version_code=584&resolution=720*1280&dpi=320&update_version_code=5844&_rticket=1478073224621
+
+
+
+concern_id  6286225228934679042
+refer   1
+count   20
+max_behot_time  1478067863    截止这个时间段的头条
+last_refresh_sub_entrance_interval  1478075051   当前时间  精确到秒
+loc_mode    6
+loc_time    1478072878
+latitude    39.90511
+longitude   116.355647
+city    北京市
+tt_from pre_load_more
+lac 4124
+cid 43070
+cp  59831b9fa22abq1     不知道干嘛的
+iid 6060889792
+device_id   33418245041
+ac  wifi
+channel xiaomi
+aid 13
+app_name    news_article
+version_code    584
+version_name    5.8.4
+device_platform android
+ab_version  87590,86575,83095,86231,86001,79287,87752,87331,85046,86854,88106,87982,88088,87881,82679,87838,88067,87804,87828,87030,87498,87035,86724,87988
+ab_client   a1,c4,e1,f2,g2,f7
+ab_feature  z1
+abflag  3
+ssmix   a
+device_type MI 2A
+device_brand    Xiaomi
+language    zh
+os_api  16
+os_version  4.1.1
+uuid    860954025518090
+openudid    60fcf5fe7e721c17
+manifest_version_code   584
+resolution  720*1280
+dpi 320
+update_version_code 5844
+_rticket    1478075051350   当前时间  精确到毫秒
+
+
+结论： cp可以写死  max_behot_time 影响显示的信息

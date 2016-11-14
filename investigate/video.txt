@@ -1,0 +1,65 @@
+视频
+
+一  刷新
+http://is.snssdk.com/api/news/feed/v47/?category=video&refer=1&count=20&min_behot_time=1478077174&last_refresh_sub_entrance_interval=1478077371&loc_mode=6&loc_time=1478076298&latitude=39.90511&longitude=116.355647&city=%E5%8C%97%E4%BA%AC%E5%B8%82&tt_from=pull&lac=4124&cid=43070&cp=53841b92aebbbq1&iid=6060889792&device_id=33418245041&ac=wifi&channel=xiaomi&aid=13&app_name=news_article&version_code=584&version_name=5.8.4&device_platform=android&ab_version=87590%2C86575%2C83095%2C86231%2C86001%2C79287%2C87752%2C87331%2C85046%2C86854%2C88106%2C87982%2C88088%2C87881%2C82679%2C87838%2C88067%2C87804%2C87828%2C87030%2C87498%2C87035%2C86724%2C87988&ab_client=a1%2Cc4%2Ce1%2Cf2%2Cg2%2Cf7&ab_feature=z1&abflag=3&ssmix=a&device_type=MI+2A&device_brand=Xiaomi&language=zh&os_api=16&os_version=4.1.1&uuid=860954025518090&openudid=60fcf5fe7e721c17&manifest_version_code=584&resolution=720*1280&dpi=320&update_version_code=5844&_rticket=1478077371937
+
+二
+http://is.snssdk.com/api/news/feed/v47/?category=video&refer=1&count=20&max_behot_time=1478074962&last_refresh_sub_entrance_interval=1478077377&loc_mode=6&loc_time=1478076298&latitude=39.90511&longitude=116.355647&city=%E5%8C%97%E4%BA%AC%E5%B8%82&tt_from=pre_load_more&lac=4124&cid=43070&cp=55841d9ba3bc1q1&iid=6060889792&device_id=33418245041&ac=wifi&channel=xiaomi&aid=13&app_name=news_article&version_code=584&version_name=5.8.4&device_platform=android&ab_version=87590%2C86575%2C83095%2C86231%2C86001%2C79287%2C87752%2C87331%2C85046%2C86854%2C88106%2C87982%2C88088%2C87881%2C82679%2C87838%2C88067%2C87804%2C87828%2C87030%2C87498%2C87035%2C86724%2C87988&ab_client=a1%2Cc4%2Ce1%2Cf2%2Cg2%2Cf7&ab_feature=z1&abflag=3&ssmix=a&device_type=MI+2A&device_brand=Xiaomi&language=zh&os_api=16&os_version=4.1.1&uuid=860954025518090&openudid=60fcf5fe7e721c17&manifest_version_code=584&resolution=720*1280&dpi=320&update_version_code=5844&_rticket=1478077377769
+
+
+结论
+
+不同处
+max_behot_time  1478073762
+cp  548a1492afbc3q1  不用管
+last_refresh_sub_entrance_interval  1478077379
+_rticket    1478077379699
+
+
+
+示例文章：
+http://toutiao.com/a6345277767186268418/?iid=6181230843&app=news_article
+http://toutiao.com/group/6345277767186268418/
+http://toutiao.com/group/6345277767186268418/
+
+视频
+http://v4.pstatp.com/f8da252eabe1c04285e88d59d5456f77/58202d03/video/c/d77569e2c637407180e5410d89a8a1b6/
+
+http://v4.pstatp.com/a78185c3924c7a43a197a64ecbfc0325/58203cf5/video/c/d77569e2c637407180e5410d89a8a1b6/
+
+http://v6.pstatp.com/video/c/d77569e2c637407180e5410d89a8a1b6/?Signature=%2BO79a1MPRqjDF6mX3k%2BMfI4glQM%3D&Expires=1478511382&KSSAccessKeyId=qh0h9TdcEMrm1VlR2ad/
+
+http://v6.pstatp.com/video/c/d77569e2c637407180e5410d89a8a1b6/?Signature=WegICc2e0Xcb%2FxuriBVw7SxtZfY%3D&Expires=1478511397&KSSAccessKeyId=qh0h9TdcEMrm1VlR2a
+
+http://v4.pstatp.com/68bff4aaceee235cbda85420869ee25a/58203d2b/video/c/d77569e2c637407180e5410d89a8a1b6/d/
+
+http://v6.pstatp.com/video/c/d77569e2c637407180e5410d89a8a1b6/?Signature=H6jlwWrc6MZAFQ8eqn5h8C0qJXw%3D&Expires=1478511498&KSSAccessKeyId=qh0h9TdcEMrm1VlR2ad/
+
+
+示例文章：
+http://www.toutiao.com/a6309723881192227073/
+
+视频
+http://v4.pstatp.com/c0a905fc2b89d427f9059e760955a223/582029a4/video/c/0d8d86602fb14223900fbbd697903873/
+
+
+http://v4.pstatp.com/1e54dc79fe06bc9ec4ad02f17b9b0967/58203094/video/c/0d8d86602fb14223900fbbd697903873/
+
+
+
+is.snssdk.com;
+
+
+
+http://v4.pstatp.com/9efe228e6b093ea67efedc045c6cf1db/58251d53/video/c/29be0062eb7c49aea48e74d373e24758/
+
+http://v7.pstatp.com/586e03be1e4ad82a8ba567a11a5db90b/58251eb4/video/c/23d4e239d6bc4d14b35170fd6c3dfba6/
+
+http://v4.pstatp.com/2358af42d94838a08c7523c04ec6ad2f/58251f1c/video/c/2eca9e1a60c848adb243c27baef72a4f/
+
+http://v4.pstatp.com/15ed34052633906ec9a89b0823bbadbb/58251f5a/video/c/c1728c6f2ed54c86b4e84bfe7d8d4198/
+
+
+http://v4.pstatp.com/aHR0cDovL3Y2LnBzdGF0cC5jb20vdmlkZW8vYy83YmFjMjRiZjZhZjc0NjUyOWU0OTBhYmMzMTI3\nZjY5My8/U2lnbmF0dXJlPWxZUXdiWDFJWlllb3k0QndyTkl5cHA1SHRzOCUzRCZFeHBpcmVzPTE0\nNzg4MzIyNzImS1NTQWNjZXNzS2V5SWQ9cWgwaDlUZGNFTXJtMVZsUjJhZC8=\n
+
+http://v7.pstatp.com/fc0bd1a512b59201daa1aee8f6e10964/58251fea/video/c/cd733111d4084b3c8cf89d61c8282aa7/
