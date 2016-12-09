@@ -17,15 +17,10 @@ urllib.request.install_opener(opener)
 
 # default header
 HEADER = {
-    'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-    'Accept-Encoding':'gzip, deflate, sdch',
-    'Accept-Language':'zh-CN,zh;q=0.8',
-    'Cache-Control':'max-age=0',
-    'Connection':'keep-alive',
-    'Host':'site.ip138.com',
-    'Referer':'http://site.ip138.com/www.facebook.com/',
-    'Upgrade-Insecure-Requests':1,
-    'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'Accept': '*/*',
+    'Accept-Encoding': 'gzip, deflate',
+    'Accept-Language':' zh-Hans-CN;q=1',
+    'User-Agent': 'MomoChat/7.4.0 ios/634 (iPhone 7 Plus; iOS 10.1.1; zh_CN; iPhone9,2; S1)'
 }
 
 # operate method
@@ -37,10 +32,10 @@ def geturlopen(hosturl, postData = {}, headers = HEADER):
     # open url
     urlresponse = urllib.request.urlopen(urlrequest)
     # return url
-    return urlresponse.read().decode('utf-8', 'ignore')
+    return urlresponse.read().decode('gbk', 'ignore')
 
 if __name__ == '__main__':
-    hosturl = "http://site.ip138.com/www.facebook.com/"
+    hosturl = "https://live-api.immomo.com/v3/room/profile/full"
     postData = {
         'input':'www.facebook.com',
         'token':'3e1fa79db944e3c1547f8e61228c743a'

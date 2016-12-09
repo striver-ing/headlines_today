@@ -548,3 +548,43 @@
     </pre>
 
     因此我们只需要拼出这个地址，就可以加载更多文章了。
+
+---
+
+数据库 MongoDB
+---
+数据库名：`headlines_today`
+
+`urls`表
+
+| 字段名              | 数据类型| 长度 | 说明       | 描述 |
+|:-------------------|:-------|:----|:----------|:----|
+|title||||标题|
+|url||||url|
+|status||||状态|
+|origin||||来源|
+
+子标签表`app_column_info`:
+
+| 字段名              | 数据类型| 长度 | 说明       | 描述 |
+|:-------------------|:-------|:----|:----------|:----|
+|COLUMN_ID|||||
+|COLUMN_NAME||||
+
+
+子标签表`app_content_info`:
+
+| 字段名              | 数据类型| 长度 | 说明       | 描述 |
+|:-------------------|:-------|:----|:----------|:----|
+|column_id||||APP子栏目ID|
+|title||||
+|originl_url||||文章（视听节目）原始地址|
+|release_time||||
+|content||||
+|abstract_image_url||||
+|abstract_image_local_path||||
+|video_url||||
+|video_local_path||||
+|is_audio||||
+|is_download||||
+|create_time||||
