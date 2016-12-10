@@ -49,15 +49,16 @@ def parseList(sourceUrl, description):
     columnId = description
 
     json = tools.getJsonByRequests(sourceUrl)
-    # json = tools.getHtml(sourceUrl)
-    print('-'*50 + '\n')
-    # print(json)
-    print('\n'+ '-'*50)
+    # json = tools.getHtml(sourceUrl, 'utf-8')
+    # json = tools.getJson(json)
 
-    datas = json['data']
+    if not json:
+        basePaser.updateUrl(sourceUrl, Constance.EXCEPTION)
+        return
+
+    datas = dict(json)['data']
     for data in datas:
-        data = data['content']
-        data = tools.getJson(data)
+        data = tools.getJsonValue(data, 'content')
 
         title = tools.getJsonValue(data, 'title')
         abstract = tools.getJsonValue(data, 'abstract')
@@ -66,6 +67,7 @@ def parseList(sourceUrl, description):
         imgUrl = tools.getJsonValue(data, 'image_list.url')
         imgUrl = imgUrl and  imgUrl or tools.getJsonValue(data, 'middle_image.url')
         imgUrl = imgUrl and  imgUrl or tools.getJsonValue(data, 'large_image_list.url')
+        imgUrl = imgUrl and imgUrl.replace('.webp', '.jpg') or imgUrl
 
         originlUrl = tools.getJsonValue(data, 'article_url')
         originlUrl = originlUrl and originlUrl or tools.getJsonValue(data, 'share_url')
@@ -84,6 +86,7 @@ def parseList(sourceUrl, description):
         html = tools.getHtml(originlUrl)
         regexs = [
             'class="article-content">(.*?)<div class="article-actions">',
+            '<div class="content">(.*?)<div class="suggestion-list-con"',
             '<!-- 文章内容 -->(.*?)<!-- @end 文章内容 -->',
             'class="yi-content-text">(.*?)<div class="yi-normal"',
             '<p.*?>(.*?)</p>'
@@ -95,6 +98,9 @@ def parseList(sourceUrl, description):
             content = ''.join(tools.getInfo(html, regexs))
             content = tools.delHtmlTag(content)
 
+        if len(content) < len(abstract):
+            content = abstract
+
         log.debug('''
             title:        %s
             abstract :    %s
@@ -104,17 +110,38 @@ def parseList(sourceUrl, description):
             videoMainUrl: %s
             videoUrl:     %s
             content :     %s
-            columnId:     %d
+            columnId:     %s
 
             '''
             %(title, abstract, imgUrl, originlUrl, releaseTime, videoMainUrl, videoUrl, content, columnId)
             )
 
+        # 下载
+        basePath = Constance.FILE_LOCAL_PATH
+        isDownload = 0
+        def callFunc():
+            global isDownload
+            isDownload = 1
+            print('isDownload %d'%isDownload)
+
+        # 下载图片
+        imgName = ''
+        if imgUrl:
+            imgName = 'iamges\\' + tools.getCurrentDate(dateFormat = '%Y-%m-%d') + "\\" + tools.getCurrentDate(dateFormat = '%Y%m%d%H%M%S') + '.jpg'
+            tools.downloadFile(imgUrl, basePath, imgName,  callFunc)
+
+        # 下载视频
+        videoName = ''
+        if videoUrl:
+            videoName = 'videos\\' + tools.getCurrentDate(dateFormat = '%Y-%m-%d') + "\\" + tools.getCurrentDate(dateFormat = '%Y%m%d%H%M%S') + '.mp4'
+            tools.downloadFile(videoUrl, basePath, videoName, callFunc)
+
         if originlUrl:
-            basePaser.addContentInfo(title, abstract, imgUrl, originlUrl, releaseTime, videoUrl, content, columnId)
-        # break
+            basePaser.addContentInfo(title, abstract, imgUrl, imgName, originlUrl, releaseTime, videoUrl, videoName, content, columnId, isDownload)
+
+        print('isDownload2 %d'%isDownload)
 
     basePaser.updateUrl(sourceUrl, Constance.DONE)
 
-# url = 'http://is.snssdk.com/api/news/feed/v46/?vid=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&city=&iid=6542551421&device_platform=iphone&ssmix=a&last_refresh_sub_entrance_interval=1481094800&openudid=7064ff7d773ef8efeb5d6a25f62cd3d85035674f&ab_version=91796,89593,83095,89184,87331,93903,94158,94056,93418,93085,92848,93981,31210,94178,93319,94042,92438,93526,93357,94163,94003,92487,87496,93887,87988&app_name=news_article&device_id=34633749953&ab_client=a1,f2,f7,e1&strict=0&detail=1&concern_id=&count=20&cp=548e4d7f7b1BCq1&category=news_local&ab_feature=z1&device_type=iPhone9,2&idfv=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&version_code=5.8.6&refer=1&os_version=10.1.1&max_behot_time=1481091071&user_city=%E6%B3%B8%E5%B7%9E&live_sdk_version=1.3.0&aid=13&channel=App%20Store&language=zh-Hans-CN&image=1&LBS_status=deny&tt_from=load_more&resolution=1242*2208&loc_mode=0&ac=WIFI&idfa=D2E02B97-0F35-486F-9CD4-A2EC13BBC8FB'
-# parseList(url)
+url = 'http://is.snssdk.com/api/news/feed/v46/?vid=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&city=&iid=6542551421&device_platform=iphone&ssmix=a&last_refresh_sub_entrance_interval=1481094800&openudid=7064ff7d773ef8efeb5d6a25f62cd3d85035674f&ab_version=91796,89593,83095,89184,87331,93903,94158,94056,93418,93085,92848,93981,31210,94178,93319,94042,92438,93526,93357,94163,94003,92487,87496,93887,87988&app_name=news_article&device_id=34633749953&ab_client=a1,f2,f7,e1&strict=0&detail=1&concern_id=&count=20&cp=548e4d7f7b1BCq1&category=news_local&ab_feature=z1&device_type=iPhone9,2&idfv=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&version_code=5.8.6&refer=1&os_version=10.1.1&max_behot_time=1481091071&user_city=%E6%B3%B8%E5%B7%9E&live_sdk_version=1.3.0&aid=13&channel=App%20Store&language=zh-Hans-CN&image=1&LBS_status=deny&tt_from=load_more&resolution=1242*2208&loc_mode=0&ac=WIFI&idfa=D2E02B97-0F35-486F-9CD4-A2EC13BBC8FB'
+parseList(url, '')

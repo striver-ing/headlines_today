@@ -582,7 +582,7 @@
 |release_time||||
 |content||||
 |abstract_image_url||||
-|abstract_image_local_path||||
+|image_local_path||||
 |video_url||||
 |video_local_path||||
 |is_audio||||

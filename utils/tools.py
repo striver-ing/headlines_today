@@ -13,6 +13,7 @@ from tld import get_tld
 from urllib import request
 import requests
 import time
+import os
 import execjs
 # pip install PyExecJS
 
@@ -50,8 +51,13 @@ def getHtmlByRequests(url, code = ''):
     return html
 
 def getJsonByRequests(url, params = None):
-    response = requests.get(url, params = params)
-    json = response.json()
+    json = {}
+    try:
+        response = requests.get(url, params = params)
+        json = response.json()
+    except Exception as e:
+        log.error(e)
+
     return json
 
 def getUrls(html):
@@ -173,8 +179,14 @@ def getJson(jsonStr):
     ---------
     @result: 返回json对象
     '''
+    jsonObject = {}
+    try:
+        jsonObject =  json.loads(jsonStr)
+    except Exception as e:
+        log.error(e)
 
-    return json.loads(jsonStr)
+    return jsonObject
+
 
 def getJsonValue(jsonObject, key):
     '''
@@ -304,3 +316,36 @@ def compileJs(jsFunc):
 
     ctx = execjs.compile(jsFunc)
     return ctx.call
+
+#######################################
+def mkdir(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc: # Python >2.5
+        pass
+
+def downloadFile(url, basePath, filename, callFunc = ''):
+    filePath = basePath + filename
+    directory = os.path.dirname(filePath)
+    mkdir(directory)
+
+    if url:
+        try:
+            log.debug('''
+                         正在下载 %s
+                         存储路径 %s
+                      '''
+                         %(url, filePath))
+
+            request.urlretrieve(url, filePath)
+
+            log.debug('''
+                         下载完毕 %s
+                         文件路径 %s
+                      '''
+                         %(url, filePath)
+                     )
+
+            callFunc and callFunc()
+        except Exception as e:
+            log.error(e)

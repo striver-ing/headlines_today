@@ -45,7 +45,7 @@ def addUrl(url, websiteId, depth, description = '', status = Constance.TODO):
 def updateUrl(url, status):
     db.urls.update({'url':url}, {'$set':{'status':status}}, multi=True)
 
-def addContentInfo(title, abstract, imgUrl, originlUrl, releaseTime, videoUrl, content, columnId):
+def addContentInfo(title, abstract, imgUrl, imgPath, originlUrl, releaseTime, videoUrl, videoPath, content, columnId, isDownload = ''):
     '''
     @summary:
     ---------
@@ -61,18 +61,24 @@ def addContentInfo(title, abstract, imgUrl, originlUrl, releaseTime, videoUrl, c
     @result:
     '''
 
-    isAudio = videoUrl and True or False
-    isDownload = False
+    isAudio = videoUrl and 1 or 0
+    createTime = tools.getCurrentDate()
 
     contentInfoDict = {
         'title':title,
         'abstract':abstract,
         'img_url':imgUrl,
+        'image_local_path':imgPath,
         'originl_url':originlUrl,
         'release_time':releaseTime,
         'video_url':videoUrl,
+        'video_local_path':videoPath,
         'content':content,
-        'column_id':columnId
+        'column_id':columnId,
+        'is_audio':isAudio,
+        'is_download':isDownload,
+        'create_time':createTime
+
         }
 
     # 查找数据库，根据url和websiteid看是否有相同的纪录，若有，则比较纪录信息，将信息更全的纪录更新到数据库中

@@ -7,9 +7,8 @@ DONE           = 2
 EXCEPTION      = 3
 
 # 存储路径
-IMG_SAVE_PATH = "../images/"
-VIDEO_SAVE_PATH = "../videos/"
+IMG_SAVE_PATH = "D:\\headline\\images\\"
+VIDEO_SAVE_PATH = "D:\\headline\\video\\"
 
-#description
-NEWS_LOCAL = 1
-VIDEO = 2
+# file path
+FILE_LOCAL_PATH = 'D:\\headlines_today\\'
