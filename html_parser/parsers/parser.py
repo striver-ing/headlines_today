@@ -82,7 +82,6 @@ def parseList(sourceUrl, description):
         parseVideoUrl = tools.compileJs(parseVideoUrlJSFunc)
         videoUrl = parseVideoUrl('base64decode', videoMainUrl)
 
-        # content = tools.getJsonValue(data, )  # 需要处理
         html = tools.getHtml(originlUrl)
         regexs = [
             'class="article-content">(.*?)<div class="article-actions">',
@@ -128,20 +127,24 @@ def parseList(sourceUrl, description):
         imgName = ''
         if imgUrl:
             imgName = 'iamges\\' + tools.getCurrentDate(dateFormat = '%Y-%m-%d') + "\\" + tools.getCurrentDate(dateFormat = '%Y%m%d%H%M%S') + '.jpg'
-            tools.downloadFile(imgUrl, basePath, imgName,  callFunc)
+            isDownload = tools.downloadFile(imgUrl, basePath, imgName,  callFunc)
+            if not isDownload:
+                imgName = ''
+
 
         # 下载视频
         videoName = ''
         if videoUrl:
             videoName = 'videos\\' + tools.getCurrentDate(dateFormat = '%Y-%m-%d') + "\\" + tools.getCurrentDate(dateFormat = '%Y%m%d%H%M%S') + '.mp4'
-            tools.downloadFile(videoUrl, basePath, videoName, callFunc)
+            isDownload = tools.downloadFile(videoUrl, basePath, videoName, callFunc)
+            if not isDownload:
+                videoName = ''
 
         if originlUrl:
             basePaser.addContentInfo(title, abstract, imgUrl, imgName, originlUrl, releaseTime, videoUrl, videoName, content, columnId, isDownload)
 
-        print('isDownload2 %d'%isDownload)
 
     basePaser.updateUrl(sourceUrl, Constance.DONE)
 
-url = 'http://is.snssdk.com/api/news/feed/v46/?vid=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&city=&iid=6542551421&device_platform=iphone&ssmix=a&last_refresh_sub_entrance_interval=1481094800&openudid=7064ff7d773ef8efeb5d6a25f62cd3d85035674f&ab_version=91796,89593,83095,89184,87331,93903,94158,94056,93418,93085,92848,93981,31210,94178,93319,94042,92438,93526,93357,94163,94003,92487,87496,93887,87988&app_name=news_article&device_id=34633749953&ab_client=a1,f2,f7,e1&strict=0&detail=1&concern_id=&count=20&cp=548e4d7f7b1BCq1&category=news_local&ab_feature=z1&device_type=iPhone9,2&idfv=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&version_code=5.8.6&refer=1&os_version=10.1.1&max_behot_time=1481091071&user_city=%E6%B3%B8%E5%B7%9E&live_sdk_version=1.3.0&aid=13&channel=App%20Store&language=zh-Hans-CN&image=1&LBS_status=deny&tt_from=load_more&resolution=1242*2208&loc_mode=0&ac=WIFI&idfa=D2E02B97-0F35-486F-9CD4-A2EC13BBC8FB'
-parseList(url, '')
+# url = 'http://is.snssdk.com/api/news/feed/v46/?vid=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&city=&iid=6542551421&device_platform=iphone&ssmix=a&last_refresh_sub_entrance_interval=1481094800&openudid=7064ff7d773ef8efeb5d6a25f62cd3d85035674f&ab_version=91796,89593,83095,89184,87331,93903,94158,94056,93418,93085,92848,93981,31210,94178,93319,94042,92438,93526,93357,94163,94003,92487,87496,93887,87988&app_name=news_article&device_id=34633749953&ab_client=a1,f2,f7,e1&strict=0&detail=1&concern_id=&count=20&cp=548e4d7f7b1BCq1&category=news_local&ab_feature=z1&device_type=iPhone9,2&idfv=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&version_code=5.8.6&refer=1&os_version=10.1.1&max_behot_time=1481091071&user_city=%E6%B3%B8%E5%B7%9E&live_sdk_version=1.3.0&aid=13&channel=App%20Store&language=zh-Hans-CN&image=1&LBS_status=deny&tt_from=load_more&resolution=1242*2208&loc_mode=0&ac=WIFI&idfa=D2E02B97-0F35-486F-9CD4-A2EC13BBC8FB'
+# parseList(url, '')

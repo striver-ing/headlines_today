@@ -347,5 +347,9 @@ def downloadFile(url, basePath, filename, callFunc = ''):
                      )
 
             callFunc and callFunc()
+            return 1
         except Exception as e:
             log.error(e)
+            return 0
+    else:
+        return 0
