@@ -126,7 +126,7 @@ def parseList(sourceUrl, description):
         # 下载图片
         imgName = ''
         if imgUrl:
-            imgName = 'iamges\\' + tools.getCurrentDate(dateFormat = '%Y-%m-%d') + "\\" + tools.getCurrentDate(dateFormat = '%Y%m%d%H%M%S') + '.jpg'
+            imgName = 'iamges/' + tools.getCurrentDate(dateFormat = '%Y-%m-%d') + "/" + tools.getCurrentDate(dateFormat = '%Y%m%d%H%M%S') + '.jpg'
             isDownload = tools.downloadFile(imgUrl, basePath, imgName,  callFunc)
             if not isDownload:
                 imgName = ''
@@ -135,7 +135,7 @@ def parseList(sourceUrl, description):
         # 下载视频
         videoName = ''
         if videoUrl:
-            videoName = 'videos\\' + tools.getCurrentDate(dateFormat = '%Y-%m-%d') + "\\" + tools.getCurrentDate(dateFormat = '%Y%m%d%H%M%S') + '.mp4'
+            videoName = 'videos/' + tools.getCurrentDate(dateFormat = '%Y-%m-%d') + "/" + tools.getCurrentDate(dateFormat = '%Y%m%d%H%M%S') + '.mp4'
             isDownload = tools.downloadFile(videoUrl, basePath, videoName, callFunc)
             if not isDownload:
                 videoName = ''
