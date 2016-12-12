@@ -69,8 +69,8 @@ def parseList(sourceUrl, description):
         imgUrl = imgUrl and  imgUrl or tools.getJsonValue(data, 'large_image_list.url')
         imgUrl = imgUrl and imgUrl.replace('.webp', '.jpg') or imgUrl
 
-        originlUrl = tools.getJsonValue(data, 'article_url')
-        originlUrl = originlUrl and originlUrl or tools.getJsonValue(data, 'share_url')
+        originalUrl = tools.getJsonValue(data, 'article_url')
+        originalUrl = originalUrl and originalUrl or tools.getJsonValue(data, 'share_url')
 
         releaseTime = tools.getJsonValue(data, 'publish_time')
         releaseTime = releaseTime and releaseTime or tools.getJsonValue(data, '1481012423')
@@ -82,7 +82,7 @@ def parseList(sourceUrl, description):
         parseVideoUrl = tools.compileJs(parseVideoUrlJSFunc)
         videoUrl = parseVideoUrl('base64decode', videoMainUrl)
 
-        html = tools.getHtml(originlUrl)
+        html = tools.getHtml(originalUrl)
         regexs = [
             'class="article-content">(.*?)<div class="article-actions">',
             '<div class="content">(.*?)<div class="suggestion-list-con"',
@@ -104,7 +104,7 @@ def parseList(sourceUrl, description):
             title:        %s
             abstract :    %s
             imgUrl :      %s
-            originlUrl:   %s
+            originalUrl:   %s
             releaseTime : %s
             videoMainUrl: %s
             videoUrl:     %s
@@ -112,7 +112,7 @@ def parseList(sourceUrl, description):
             columnId:     %s
 
             '''
-            %(title, abstract, imgUrl, originlUrl, releaseTime, videoMainUrl, videoUrl, content, columnId)
+            %(title, abstract, imgUrl, originalUrl, releaseTime, videoMainUrl, videoUrl, content, columnId)
             )
 
         # 下载
@@ -140,8 +140,8 @@ def parseList(sourceUrl, description):
             if not isDownload:
                 videoName = ''
 
-        if originlUrl:
-            basePaser.addContentInfo(title, abstract, imgUrl, imgName, originlUrl, releaseTime, videoUrl, videoName, content, columnId, isDownload)
+        if originalUrl:
+            basePaser.addContentInfo(title, abstract, imgUrl, imgName, originalUrl, releaseTime, videoUrl, videoName, content, columnId, isDownload)
 
 
     basePaser.updateUrl(sourceUrl, Constance.DONE)

@@ -578,7 +578,7 @@
 |:-------------------|:-------|:----|:----------|:----|
 |column_id||||APP子栏目ID|
 |title||||
-|originl_url||||文章（视听节目）原始地址|
+|original_url||||文章（视听节目）原始地址|
 |release_time||||
 |content||||
 |abstract_image_url||||
