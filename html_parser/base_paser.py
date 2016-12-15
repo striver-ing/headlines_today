@@ -81,7 +81,8 @@ def addContentInfo(title, abstract, imgUrl, imgPath, originalUrl, releaseTime, v
         'sensitive_id':sensitive_id,
         'violate_id':violate_id,
         'storage_id':2,
-        'app_id':4
+        'app_id':4,
+        'read_status':0
         }
 
     db.app_content_info.save(contentInfoDict)
