@@ -185,7 +185,8 @@ def getJson(jsonStr):
     try:
         jsonObject =  json.loads(jsonStr)
     except Exception as e:
-        log.error(e)
+        # log.error(e)
+        pass
 
     return jsonObject
 
@@ -394,3 +395,4 @@ def capture(url, save_fn="capture.png"):
 
 if __name__ == "__main__":
    # capture("http://www.jb51.net", '../dd.png')
+   downloadFile('http://img.lzep.cn/ep/other/ckplayer6.5/ckplayer.swf', '.', 'video.swf')

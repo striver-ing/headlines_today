@@ -61,6 +61,12 @@ def parseList(sourceUrl, description):
         data = tools.getJsonValue(data, 'content')
 
         title = tools.getJsonValue(data, 'title')
+
+        # 检测数据库中是否存在，若存在则退出
+        result = db.app_content_info.find({'title':title})
+        if list(result):
+             continue
+
         abstract = tools.getJsonValue(data, 'abstract')
         abstract = abstract and abstract or tools.getJsonValue(data, 'content')
 
@@ -100,20 +106,55 @@ def parseList(sourceUrl, description):
         if len(content) < len(abstract):
             content = abstract
 
+        # 敏感事件
+        sensitive_id = None
+        sensitive_event_infos = db.sensitive_event_info.find({})
+        for sensitive_event_info in sensitive_event_infos:
+            keywords = sensitive_event_info['keyword1']
+            keywords = keywords.split(',')
+            for keyword in keywords:
+                if keyword and (keyword in title or keyword in content):
+                    sensitive_id = sensitive_event_info['_id']
+                    break
+
+            if sensitive_id:
+                break
+
+        # 违规事件
+        violate_id = None
+        vioation_knowledge_infos = db.vioation_knowledge_info.find({})
+        for vioation_knowledge_info in vioation_knowledge_infos:
+            keywords = vioation_knowledge_info['keyword1']
+            keywords = keywords.split(' ')
+            for keyword in keywords:
+                if keyword and (keyword in title or keyword in content):
+                    violate_id = vioation_knowledge_info['_id']
+                    break
+
+            if violate_id:
+                break
+
         log.debug('''
             title:        %s
             abstract :    %s
             imgUrl :      %s
-            originalUrl:   %s
+            originalUrl:  %s
             releaseTime : %s
             videoMainUrl: %s
             videoUrl:     %s
             content :     %s
-            columnId:     %s
+            columnId:     %d
+            sensitive_id: %d
+            violate_id:   %d
 
             '''
-            %(title, abstract, imgUrl, originalUrl, releaseTime, videoMainUrl, videoUrl, content, columnId)
+            %(title, abstract, imgUrl, originalUrl, releaseTime, videoMainUrl, videoUrl, content, columnId, sensitive_id and sensitive_id or 0, violate_id and violate_id or 0)
             )
+
+        # 如果是视频栏 并且不包含敏感或违法信息 则不下载
+        if columnId == Constance.VIDEO:
+            if not sensitive_id and not violate_id:
+                continue
 
         # 下载
         basePath = Constance.FILE_LOCAL_PATH
@@ -121,7 +162,6 @@ def parseList(sourceUrl, description):
         def callFunc():
             global isDownload
             isDownload = 1
-            print('isDownload %d'%isDownload)
 
         # 下载图片
         imgName = ''
@@ -141,10 +181,7 @@ def parseList(sourceUrl, description):
                 videoName = ''
 
         if originalUrl:
-            basePaser.addContentInfo(title, abstract, imgUrl, imgName, originalUrl, releaseTime, videoUrl, videoName, content, columnId, isDownload)
+            basePaser.addContentInfo(title, abstract, imgUrl, imgName, originalUrl, releaseTime, videoUrl, videoName, content, columnId, isDownload, sensitive_id, violate_id)
 
 
     basePaser.updateUrl(sourceUrl, Constance.DONE)
-
-# url = 'http://is.snssdk.com/api/news/feed/v46/?vid=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&city=&iid=6542551421&device_platform=iphone&ssmix=a&last_refresh_sub_entrance_interval=1481094800&openudid=7064ff7d773ef8efeb5d6a25f62cd3d85035674f&ab_version=91796,89593,83095,89184,87331,93903,94158,94056,93418,93085,92848,93981,31210,94178,93319,94042,92438,93526,93357,94163,94003,92487,87496,93887,87988&app_name=news_article&device_id=34633749953&ab_client=a1,f2,f7,e1&strict=0&detail=1&concern_id=&count=20&cp=548e4d7f7b1BCq1&category=news_local&ab_feature=z1&device_type=iPhone9,2&idfv=B0DB5DD0-FF94-4773-85B1-EFC11132C2A4&version_code=5.8.6&refer=1&os_version=10.1.1&max_behot_time=1481091071&user_city=%E6%B3%B8%E5%B7%9E&live_sdk_version=1.3.0&aid=13&channel=App%20Store&language=zh-Hans-CN&image=1&LBS_status=deny&tt_from=load_more&resolution=1242*2208&loc_mode=0&ac=WIFI&idfa=D2E02B97-0F35-486F-9CD4-A2EC13BBC8FB'
-# parseList(url, '')

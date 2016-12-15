@@ -40,6 +40,7 @@ class AddRootUrl(threading.Thread):
                     'aid'                                : 13,
                     'ab_version'                         : '91796,89593,83095,89184,87331,93903,94158,94056,93418,93085,92848,93981,31210,94178,93319,94042,92438,93526,93357,94163,94003,92487,87496,93887,87988',
                     'ab_feature'                         : 'z1',
+                    'build_version'                      : '5.9.0.5',
                     'openudid'                           : '7064ff7d773ef8efeb5d6a25f62cd3d85035674f',
                     'live_sdk_version'                   : '1.3.0',
                     'idfv'                               : 'B0DB5DD0-FF94-4773-85B1-EFC11132C2A4',
@@ -78,9 +79,11 @@ class AddRootUrl(threading.Thread):
         while maxBehotTime >= contentReleasedTime:
             maxBehotTime -= timeInterval
 
+            currentTimestamp = currentTimestamp + random.randint(60, 300)
+
             # 泸州的文章
             params['category'] = 'news_local'
-            params['last_refresh_sub_entrance_interval'] = currentTimestamp + random.randint(60, 300)
+            params['last_refresh_sub_entrance_interval'] = currentTimestamp# + random.randint(60, 300)
             params['max_behot_time'] = maxBehotTime
 
             url = tools.jointUrl(baseUrl, params)
@@ -88,10 +91,8 @@ class AddRootUrl(threading.Thread):
 
             # 视频
             params['category'] = 'video'
-            params['last_refresh_sub_entrance_interval'] = currentTimestamp + random.randint(60, 300)
+            params['last_refresh_sub_entrance_interval'] = currentTimestamp# + random.randint(60, 300)
             params['max_behot_time'] = maxBehotTime
 
             url = tools.jointUrl(baseUrl, params)
             self.addUrl(url, Constance.VIDEO)
-
-            currentTimestamp = currentTimestamp + random.randint(60, 300)

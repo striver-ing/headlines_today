@@ -15,3 +15,6 @@ VIDEO      = 2
 
 APP_ID = 4
 
+# storage_id = 2
+STORAGE_ID = 2
+

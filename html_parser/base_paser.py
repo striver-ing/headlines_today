@@ -45,7 +45,7 @@ def addUrl(url, websiteId, depth, description = '', status = Constance.TODO):
 def updateUrl(url, status):
     db.urls.update({'url':url}, {'$set':{'status':status}}, multi=True)
 
-def addContentInfo(title, abstract, imgUrl, imgPath, originalUrl, releaseTime, videoUrl, videoPath, content, columnId, isDownload = ''):
+def addContentInfo(title, abstract, imgUrl, imgPath, originalUrl, releaseTime, videoUrl, videoPath, content, columnId, isDownload, sensitive_id, violate_id):
     '''
     @summary:
     ---------
@@ -77,30 +77,14 @@ def addContentInfo(title, abstract, imgUrl, imgPath, originalUrl, releaseTime, v
         'column_id':columnId,
         'is_audio':isAudio,
         'is_download':isDownload,
-        'create_time':createTime
-
+        'create_time':createTime,
+        'sensitive_id':sensitive_id,
+        'violate_id':violate_id,
+        'storage_id':2,
+        'app_id':4
         }
 
-    # 查找数据库，根据url和websiteid看是否有相同的纪录，若有，则比较纪录信息，将信息更全的纪录更新到数据库中
-    for doc in db.app_content_info.find({'original_url':originalUrl}, {'_id':0}):
-        isDiffent = False
-        warning = '\n' + '-' * 50 + '\n'
-        for key, value in doc.items():
-            if len(str(doc[key])) < len(str(contentInfoDict[key])):
-                isDiffent = True
-                warning = warning + '更新 old %s: %s\n     new %s: %s\n'%(key, doc[key], key,contentInfoDict[key])
-                doc[key] =contentInfoDict[key]
-
-            else:
-                warning = warning + '留守 old %s: %s\n     new %s: %s\n'%(key, doc[key], key,contentInfoDict[key])
-
-        if isDiffent:
-            warning = '已存在：\n' + warning + '-' * 50
-            log.warning(warning)
-
-            db.app_content_info.update({'original_url':originalUrl}, {'$set':doc})
-        else:
-            log.warning('已存在originalUrl:  ' + originalUrl)
-        return
-
     db.app_content_info.save(contentInfoDict)
+
+    if sensitive_id or violate_id:
+        db.vioation_content_info.save(contentInfoDict)
